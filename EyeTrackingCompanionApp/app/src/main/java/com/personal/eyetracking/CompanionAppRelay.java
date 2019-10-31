@@ -31,6 +31,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -45,8 +46,8 @@ public class CompanionAppRelay extends AppCompatActivity {
     public Surface surfaceTexture;
     public Surface imgReaderSurface;
 
-    public int mImageWidth = 640;
-    public int mImageHeight = 640;
+    public int mImageWidth = 480;
+    public int mImageHeight = 480;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,21 +97,27 @@ public class CompanionAppRelay extends AppCompatActivity {
 
     private void initialization() {
         mCamManager = (CameraManager) getSystemService(CAMERA_SERVICE);
-        mImageReader = ImageReader.newInstance(mImageWidth, mImageHeight, ImageFormat.JPEG, 1);
+        mImageReader = ImageReader.newInstance(mImageWidth, mImageHeight, ImageFormat.YUV_420_888, 30);
         imgReaderSurface = mImageReader.getSurface();
 
         mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
             @Override
             public void onImageAvailable(ImageReader reader) {
-                Image i = reader.acquireNextImage();
+                Image img = reader.acquireNextImage();
 
-                Image.Plane[] p = i.getPlanes();
+                ByteBuffer buff = img.getPlanes()[0].getBuffer();
+                byte[] buffBytes = new byte[buff.capacity()];
 
-                for(Image.Plane plane: p){
-                    //dont know how to pass the bytes from plane ka buffer to the networkoutput thread
+                buff.get(buffBytes);
+                GlobalContext.buffer.add(buffBytes);
+
+                img.close();
+
+                Toast.makeText(CompanionAppRelay.this, buffBytes.length, Toast.LENGTH_LONG).show();
+
+                synchronized (GlobalContext.buffer){
+                    GlobalContext.buffer.notify();
                 }
-
-                i.close();
             }
         }, null);
 
@@ -220,20 +227,22 @@ class NetworkOutput implements Runnable {
             Socket soc = new Socket(ip, port);
             ObjectOutputStream oos = new ObjectOutputStream(soc.getOutputStream());
 
-            synchronized (GlobalContext.buffer){
-                if(GlobalContext.buffer.size() == 0){
-                    GlobalContext.buffer.wait();
+            while(true){
+
+                if(GlobalContext.buffer.size() == 0 ){
+                    synchronized (GlobalContext.buffer){
+                        GlobalContext.buffer.wait();
+                    }
                 }
 
                 while(GlobalContext.buffer.size() > 0){
-                    GlobalContext.buffer.remove(GlobalContext.buffer.size()-1);
-
-                    Toast.makeText(c, "Obtained Image reference", Toast.LENGTH_LONG).show();
+                    GlobalContext.buffer.remove(0);
                 }
             }
 
-            oos.close();
-            soc.close();
+
+//            oos.close();
+//            soc.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

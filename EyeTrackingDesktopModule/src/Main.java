@@ -32,6 +32,7 @@ public class Main {
         first_screen.setIPAddress(InetAddress.getLocalHost().getHostAddress());
 
         Socket soc = servSoc.accept();
+        servSoc.accept();
 
         soc.close();
         servSoc.close();
