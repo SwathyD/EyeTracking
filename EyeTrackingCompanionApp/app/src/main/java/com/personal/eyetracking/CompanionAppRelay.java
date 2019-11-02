@@ -18,6 +18,7 @@ import android.media.ImageReader;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.nabinbhandari.android.permissions.Permissions;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -54,8 +56,6 @@ public class CompanionAppRelay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-
-        Toast.makeText(CompanionAppRelay.this, Thread.currentThread().getName(), Toast.LENGTH_SHORT).show();
 
         Intent i = getIntent();
 
@@ -112,8 +112,6 @@ public class CompanionAppRelay extends AppCompatActivity {
                 GlobalContext.buffer.add(buffBytes);
 
                 img.close();
-
-                Toast.makeText(CompanionAppRelay.this, buffBytes.length, Toast.LENGTH_LONG).show();
 
                 synchronized (GlobalContext.buffer){
                     GlobalContext.buffer.notify();
@@ -215,6 +213,8 @@ class NetworkOutput implements Runnable {
     int port;
     CompanionAppRelay c;
 
+    public boolean isStopped = false;
+
     public NetworkOutput(CompanionAppRelay c, String ip, int port) {
         this.c = c;
         this.ip = ip;
@@ -225,9 +225,9 @@ class NetworkOutput implements Runnable {
     public void run() {
         try {
             Socket soc = new Socket(ip, port);
-            ObjectOutputStream oos = new ObjectOutputStream(soc.getOutputStream());
+            OutputStream os = soc.getOutputStream();
 
-            while(true){
+            while(!isStopped){
 
                 if(GlobalContext.buffer.size() == 0 ){
                     synchronized (GlobalContext.buffer){
@@ -236,15 +236,21 @@ class NetworkOutput implements Runnable {
                 }
 
                 while(GlobalContext.buffer.size() > 0){
-                    GlobalContext.buffer.remove(0);
+                     byte[] img = GlobalContext.buffer.remove(0);
+
+                     os.write(img.length);
+                     os.write(img);
+                     os.flush();
                 }
             }
 
-
-//            oos.close();
-//            soc.close();
+            os.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setStopped(boolean stopped) {
+        isStopped = stopped;
     }
 }
