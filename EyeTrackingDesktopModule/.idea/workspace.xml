@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74cf4fa8-4467-40cb-98a2-0f216ba13fdc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/eyetracker/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/eyetracker/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/eyetracker/EyeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/eyetracker/EyeTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/eyetracker/Test1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/eyetracker/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/eyetracker/WebCamHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/eyetracker/WebCamHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EyeTracking/ConnectWithCompanionApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EyeTracking/ConnectWithCompanionApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EyeTracking/MainScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EyeTracking/MainScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConnectWithCompanionApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConnectWithCompanionApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +37,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
