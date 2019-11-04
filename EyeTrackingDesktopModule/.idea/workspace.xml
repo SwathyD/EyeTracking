@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74cf4fa8-4467-40cb-98a2-0f216ba13fdc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/MainScreen.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/rotate.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/rotate.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Adjustment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adjustment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CombinedXYPlotDemo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CombinedXYPlotDemo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Iris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Iris.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +29,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1SppNQm4FcJMak7dfMZn99VMb3U" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="372" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -33,6 +43,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\om\Desktop\github_repos\EyeTracking\EyeTrackingDesktopModule\src\assets" />
       <recent name="C:\Users\om\Desktop\github_repos\EyeTracking\src\assets" />
     </key>
   </component>
@@ -88,13 +99,16 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="2" />
+          <line>64</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
