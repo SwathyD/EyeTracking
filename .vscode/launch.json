@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EyeTracker",
+            "request": "launch",
+            "mainClass": "eyetracker.EyeTracker"
+        }
+    ]
+}

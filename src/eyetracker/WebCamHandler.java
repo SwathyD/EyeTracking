@@ -67,8 +67,8 @@ public class WebCamHandler extends CameraAdapter {
                             frameBuffer.add(frame);
                         }
                         // convert and show the frame
-                        Image imageToShow = Utils.mat2Image(frame);
-                        updateImageView(currentFrame, imageToShow);
+                        // Image imageToShow = Utils.mat2Image(frame);
+                        // updateImageView(currentFrame, imageToShow);
                     }
                 };
 
@@ -143,7 +143,7 @@ public class WebCamHandler extends CameraAdapter {
      * @param image the {@link Image} to show
      */
     private void updateImageView(ImageView view, Image image) {
-        Utils.onFXThread(view.imageProperty(), image);
+        // Utils.onFXThread(view.imageProperty(), image);
     }
 
     /**

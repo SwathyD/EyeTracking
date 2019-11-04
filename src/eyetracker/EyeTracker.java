@@ -58,6 +58,19 @@ public class EyeTracker {
         this.frame = frame;
     }
 
+    public static void main(final String[] args) throws Exception {
+
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
+        Mat frame;
+        frame = Imgcodecs.imread("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\interim\\pic_ip10.jpeg");
+
+        Imgcodecs.imwrite("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\interim\\pic_ip11.jpeg", frame);
+
+        EyeTracker eyetracker = new EyeTracker(frame);
+        eyetracker.getPrediction();
+    }
+
     void processEye(Mat eye, String title) throws Exception {
         Mat bin = eye.clone();
         Mat norm = eye.clone();
@@ -135,7 +148,7 @@ public class EyeTracker {
         }
 
         Imgproc.threshold(bin, bin, (i) * 5, 255, Imgproc.THRESH_BINARY);
-        Imgcodecs.imwrite("C:\\Users\\dhanesh\\Desktop\\projects\\eye tracking\\pic_op" + title + "" + EyeTracker.no + "_eye_bin.jpg", bin);
+        Imgcodecs.imwrite("C:\\Users\\om\\Deskto\\github_repos\\EyeTracking\\interim\\pic_op" + title + "" + EyeTracker.no + "_eye_bin.bmp", bin);
 
         Adjustment test = new Adjustment(bounding_points);
         test.apply(bin);
@@ -168,9 +181,9 @@ public class EyeTracker {
 //        Point leftDeviation = new Point(iris.center.x - leftCircle.center.x, iris.center.y - leftCircle.center.y);
 //        Point rightDeviation = new Point(rightCircle.center.x - iris.center.x, rightCircle.center.y - iris.center.y);
 
-        Imgcodecs.imwrite("C:\\Users\\dhanesh\\Desktop\\projects\\eye tracking\\pic_op" + title + "" + EyeTracker.no + "_eye_norm.jpg", norm);
-        Imgcodecs.imwrite("C:\\Users\\dhanesh\\Desktop\\projects\\eye tracking\\pic_op" + title + "" + EyeTracker.no + "_eye_binary.jpg", bin);
-        Imgcodecs.imwrite("C:\\Users\\dhanesh\\Desktop\\projects\\eye tracking\\pic_op" + title + "" + EyeTracker.no + "_eye.jpg", eye);
+        Imgcodecs.imwrite("C:\\Users\\om\\Deskto\\github_repos\\EyeTracking\\interim\\pic_op" + title + "" + EyeTracker.no + "_eye_norm.bmp", norm);
+        Imgcodecs.imwrite("C:\\Users\\om\\Deskto\\github_repos\\EyeTracking\\interim\\pic_op" + title + "" + EyeTracker.no + "_eye_binary.bmp", bin);
+        Imgcodecs.imwrite("C:\\Users\\om\\Deskto\\github_repos\\EyeTracking\\interim\\pic_op" + title + "" + EyeTracker.no + "_eye.bmp", eye);
     }
 
     void getPrediction() {
@@ -186,18 +199,7 @@ public class EyeTracker {
             ex.printStackTrace();
         }
 
-    }
-    
-    public static void main(final String[] args) throws Exception {
-
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
-        Mat frame;
-        frame = Imgcodecs.imread("C:\\Users\\dhanesh\\Desktop\\projects\\eyetracker\\pic_ip" + EyeTracker.no + ".jpg");
-
-        EyeTracker eyetracker = new EyeTracker(frame);
-        eyetracker.getPrediction();
-    }
+    }        
 
     public static ArrayList<ArrayList<Integer>> getBlackList(int row, Mat m) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
@@ -255,7 +257,7 @@ public class EyeTracker {
         for (int start1 = start_x; start1 <= end_x; start1++) {
             m.put(row, start1, 128);
         }
-        Imgcodecs.imwrite("C:\\Users\\dhanesh\\Desktop\\projects\\eye tracking\\pic_op" + EyeTracker.no + "_eye_bin.jpg", m);
+        Imgcodecs.imwrite("C:\\Users\\om\\Deskto\\github_repos\\EyeTracking\\interim\\pic_op" + EyeTracker.no + "_eye_bin.bmp", m);
 
         for (int i = 0; i < 2; i++) {
 
@@ -288,7 +290,7 @@ public class EyeTracker {
                     m.put(temp_y, start, 128);
                 }
 
-                Imgcodecs.imwrite("C:\\Users\\dhanesh\\Desktop\\projects\\eye tracking\\pic_op" + EyeTracker.no + "_eye_bin.jpg", m);
+                Imgcodecs.imwrite("C:\\Users\\om\\Deskto\\github_repos\\EyeTracking\\interim\\pic_op" + EyeTracker.no + "_eye_bin.bmp", m);
 
                 temp_y = (i == 1) ? (temp_y - 1) : temp_y + 1;
             }

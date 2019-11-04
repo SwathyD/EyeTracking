@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="74cf4fa8-4467-40cb-98a2-0f216ba13fdc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/eyetracker/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/eyetracker/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/eyetracker/EyeTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/eyetracker/EyeTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/eyetracker/Test1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/eyetracker/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/eyetracker/WebCamHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/eyetracker/WebCamHandler.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -25,7 +25,7 @@ class Controller {
     public void useWebCam() {
         cameraIp = new WebCamHandler();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXHelloCV.fxml"));
-        Test1 controller = loader.getController();
+        // Test1 controller = loader.getController();
     }
 
     public void start(Stage primaryStage) {
@@ -45,10 +45,10 @@ class Controller {
             primaryStage.show();
 
             // set the proper behavior on closing the application
-            Test1 controller = loader.getController();
+            // Test1 controller = loader.getController();
             primaryStage.setOnCloseRequest((new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
-                    controller.setClosed();
+                    // controller.setClosed();
                 }
             }));
         } catch (Exception e) {

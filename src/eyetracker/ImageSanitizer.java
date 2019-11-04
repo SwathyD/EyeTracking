@@ -16,10 +16,10 @@ public class ImageSanitizer {
     
     static ArrayList<Mat> detectEyes(Mat frame, Mat leftEyeMat, Mat rightEyeMat){
         CascadeClassifier faceClassifier = new CascadeClassifier();
-        faceClassifier.load("C:\\Users\\dhanesh\\Downloads\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_default.xml");
+        faceClassifier.load("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\src\\opencv_java\\haarcascade_frontalface_default.xml");
 
         CascadeClassifier eyeClassifier = new CascadeClassifier();
-        eyeClassifier.load("C:\\Users\\dhanesh\\Downloads\\opencv\\build\\etc\\haarcascades\\haarcascade_eye_tree_eyeglasses.xml");
+        eyeClassifier.load("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\src\\opencv_java\\haarcascade_eye_tree_eyeglasses.xml");
 
         MatOfRect faceDetections = new MatOfRect();
         faceClassifier.detectMultiScale(frame, faceDetections);
