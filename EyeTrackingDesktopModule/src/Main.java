@@ -80,9 +80,6 @@ public class Main {
         servSoc.close();
     }
 
-    public static void gotoMainScreen(){
-        frame.setContentPane(main_screen.panel1);
-    }
     public static BufferedImage rotate(BufferedImage bimg, double angle) {
 
         int w = bimg.getWidth();
@@ -94,5 +91,8 @@ public class Main {
         graphic.drawImage(bimg, null, 0, 0);
         graphic.dispose();
         return rotated;
+    }
+    public static void gotoMainScreen(){
+        frame.setContentPane(main_screen.panel1);
     }
 }

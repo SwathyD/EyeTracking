@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74cf4fa8-4467-40cb-98a2-0f216ba13fdc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/MainScreen.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/rotate.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/rotate.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Adjustment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Adjustment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CombinedXYPlotDemo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CombinedXYPlotDemo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Iris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Iris.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,6 +33,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
