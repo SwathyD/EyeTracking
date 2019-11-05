@@ -1,3 +1,11 @@
+package server;
+
+import eyetracker.EyeTracker;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +30,8 @@ public class Main {
     private static int rotationAngle;
 
     public static void main(String[] args) throws Exception {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
         frame = new JFrame("EyeTracking");
         frame.setUndecorated(true);
 
@@ -71,6 +81,24 @@ public class Main {
 
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage buffImage = rotate(ImageIO.read(bis), rotationAngle);
+
+            Mat mat = Imgcodecs.imdecode(new MatOfByte(img), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+
+            for(int x = 0; x < rotationAngle/90; x++){
+                Core.rotate(mat, mat, Core.ROTATE_90_CLOCKWISE);
+            }
+            EyeTracker eyetracker = new EyeTracker(mat);
+            Mat output = eyetracker.getPrediction();
+
+            if(output != null){
+//                Imgcodecs.imwrite("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\interim\\pic_op.bmp", output);
+
+                MatOfByte buff = new MatOfByte();
+                Imgcodecs.imencode(".jpg", output, buff);
+
+                bis = new ByteArrayInputStream(buff.toArray());
+                buffImage = ImageIO.read(bis);
+            }
 
             main_screen.outputLabel.setIcon(new ImageIcon(buffImage));
         }

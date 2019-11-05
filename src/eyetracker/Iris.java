@@ -11,6 +11,11 @@ class Circle{
     Point center;
     float radius;
     
+    Circle(){
+        center = new Point(0, 0);
+        radius = 0;
+    }
+
     Circle(Point center, float radius){
         this.center = center;
         this.radius = radius;
@@ -164,11 +169,11 @@ public class Iris {
         index = y_start + size + max_list.get(max_list.size()/2 - ((max_list.size()>1) ? 1 : 0));
         int c_x = c_x_list.get(max_list.get(max_list.size()/2 - ((max_list.size()>1) ? 1 : 0)));
 
-        System.out.println(index + " " + c_x);
-        System.out.println(seq_list);
-        System.out.println(max_list);
-        System.out.println(max_list.size()/2 - ((max_list.size()>1) ? 1 : 0));
-        System.out.println(max);
+        // System.out.println(index + " " + c_x);
+        // System.out.println(seq_list);
+        // System.out.println(max_list);
+        // System.out.println(max_list.size()/2 - ((max_list.size()>1) ? 1 : 0));
+        // System.out.println(max);
 
         Circle circ = new Circle(new Point(c_x+max/2, index), max/2 + 1);
         Imgproc.circle(eye, circ.center, (int)circ.radius, new Scalar(255));

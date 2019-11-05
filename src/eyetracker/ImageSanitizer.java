@@ -9,22 +9,43 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
+class MatAndPoint{
+    public Mat m;
+    public Point p;
+
+    MatAndPoint(Mat m, Point p){
+        this.m = m;
+        this.p = p;
+    }
+}
+
 public class ImageSanitizer {
+
+    private static CascadeClassifier faceClassifier;
+    private static CascadeClassifier eyeClassifier;
+
+    static {
+        faceClassifier = new CascadeClassifier();
+        faceClassifier.load("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\src\\opencv_java\\haarcascade_frontalface_default.xml");
+    
+        eyeClassifier = new CascadeClassifier();
+        eyeClassifier.load("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\src\\opencv_java\\haarcascade_eye_tree_eyeglasses.xml");
+    }
+
     static void convertFrame(Mat frame){
         Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2GRAY);
     }
     
-    static ArrayList<Mat> detectEyes(Mat frame, Mat leftEyeMat, Mat rightEyeMat){
-        CascadeClassifier faceClassifier = new CascadeClassifier();
-        faceClassifier.load("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\src\\opencv_java\\haarcascade_frontalface_default.xml");
-
-        CascadeClassifier eyeClassifier = new CascadeClassifier();
-        eyeClassifier.load("C:\\Users\\om\\Desktop\\github_repos\\EyeTracking\\src\\opencv_java\\haarcascade_eye_tree_eyeglasses.xml");
+    static ArrayList<MatAndPoint> detectEyes(Mat frame){
+        Mat leftEyeMat = null, rightEyeMat = null;
 
         MatOfRect faceDetections = new MatOfRect();
         faceClassifier.detectMultiScale(frame, faceDetections);
 
         Rect rect = faceDetections.toArray()[0];
+        
+        Point left = new Point(rect.y, rect.x);
+        Point right = new Point(rect.y, rect.x);
 
         Rect R = new Rect(rect.y, rect.x, rect.y + rect.height, rect.x + rect.width); //Create a rect 
         Mat ROI = new Mat(frame, R);
@@ -33,8 +54,8 @@ public class ImageSanitizer {
         eyeClassifier.detectMultiScale(ROI, eyesDetections);
         
         Rect leftEye = null;
-        Rect rightEye = null;
-        
+        Rect rightEye = null;         
+
         for (Rect r : eyesDetections.toArray()) {
             if (r.y + r.height < rect.height / 2) {
                 Imgproc.rectangle(
@@ -48,16 +69,21 @@ public class ImageSanitizer {
                 if (eyecenter < rect.width * 0.5) {
                     leftEye = new Rect(r.x, r.y, r.width, r.height);
                     leftEyeMat = new Mat(ROI, leftEye);
+                    left.x = left.x + r.x;
+                    left.y = left.y + r.y;
                 } else {
                     rightEye = new Rect(r.x, r.y, r.width, r.height);
                     rightEyeMat = new Mat(ROI, rightEye);
+                    right.x = right.x + r.x;
+                    right.y = right.y + r.y;
                 }
+
             }
         }
         ROI.release();
-        ArrayList<Mat> eyes = new ArrayList<Mat>();
-        eyes.add(leftEyeMat);
-        eyes.add(rightEyeMat);
+        ArrayList<MatAndPoint> eyes = new ArrayList<>();
+        eyes.add(new MatAndPoint(leftEyeMat, left));
+        eyes.add(new MatAndPoint(rightEyeMat, right));
         return eyes;
     }
     

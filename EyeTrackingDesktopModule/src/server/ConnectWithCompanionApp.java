@@ -1,3 +1,5 @@
+package server;
+
 import javax.swing.*;
 import java.awt.*;
 
